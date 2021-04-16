@@ -1,0 +1,42 @@
+<div class="menu-box">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="heading-title text-center">
+          <h2 style="font-family:b titr;">محصولات ویژه</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="special-menu text-center">
+          <div class="button-group filter-button-group">
+            <button class="active" data-filter="*" style="font-family:b nazanin; font-size: 30px;">همه</button>
+            <button data-filter="Ir" style="font-family:b nazanin; font-size: 30px;">ناهار</button>
+            <button data-filter="*" style="font-family:b nazanin; font-size: 30px;">شام</button>
+            <button data-filter="*" style="font-family:b nazanin; font-size: 30px;">نوشیدنی</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row special-list">
+    	{%for product in products %}
+        <a href="{% url 'shop:product_detail' product.id product.slug%}">
+          <div class="col-lg-4 col-md-6 special-grid ">
+            <div class="gallery-single fix">
+              <img src="{{product.image.url}}" class="img-fluid" alt="Image" >
+              <div class="why-text">
+                <h4>{{product.name}}</h4>
+                <p>{{product.description}}</p>
+                <h5> {{product.price}} تومان</h5>
+              </div>
+            </div>      
+           </div>
+        </a>
+      	{% endfor %}
+
+      
+    </div>
+  </div>
+</div>

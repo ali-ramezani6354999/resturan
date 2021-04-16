@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+  text-align: center;
+  position:relative;
+  top:90px;
+}
+
+h2 {
+  text-align: left;
+}
+
+h3 {
+  text-align: right;
+}
+</style>
+</head>
+<style>
+img {
+  border : 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  display : block;
+  margin-left : auto;
+  margin-right : auto;
+  margin-top : auto;
+
+}
+
+</style>
+
+
+<body>
+  <div class="about-section-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <img src="{{product.photo.url}}" alt="" class="img-fluid">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+          <div class="inner-column">
+            <h1 style="font-family: B titr;font-size:40px"></h1>
+
+            <style>
+            .p1 {
+              font-family: "B nazanin", Times, serif;
+            }
+            .p2 {
+              font-family: "B nazanin", Times, serif;
+              text-align : right;
+            }
+
+            </style>
+            <p class="p1" style="font-size:40px;">نوع غذا : {{product.name}} </p>
+            <p class="p2">مشخصات : {{product.description}}</p>
+            <p class="p2"> قیمت :{{product.price}}تومان</p>
+            <p class="price">Rs{{ product.price}}</p> 
+            <form action="{% url "cartt:cartt_add" product.id %}" method="post">
+              {{ cartt_product_form}}
+              {% csrf_token %}
+              <input type="submit" value="add to cart">
+            </form>   
+            {{ product.description|linebreaks }}
+        
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+</body>
+</html>
+
+
+{% endblock content%}
