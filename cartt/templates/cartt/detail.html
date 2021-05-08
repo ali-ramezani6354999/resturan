@@ -64,7 +64,10 @@
       Checkout
     </a>
   </p>
-  {%else "{% url "/admin/" %}" %}
+  {% else  %} 
+  <script>
+    window.location.assign("http://127.0.0.1:8000/admin/login/?next=/admin/")
+  </script
 
   {% endif %}
 {% endblock %}
